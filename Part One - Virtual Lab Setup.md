@@ -1,6 +1,6 @@
 # Part One - Virtual Lab Setup
 
-### Blog Post: https://blog.ecapuano.com/p/so-you-want-to-be-a-soc-analyst-part
+### Blog Post: [So you want to be a SOC Analyst? Part 1](https://blog.ecapuano.com/p/so-you-want-to-be-a-soc-analyst-part)
 
 Note: Follow steps AFTER downloading VMware Workstation as well as the VMs required. Relevant links from the blog will be provided below:
 
@@ -280,7 +280,7 @@ Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational" -MaxEvents 10
 
 ![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/a733e5db-892a-4144-9ebf-3ee6957c2f19)
 
-Install [LimaCharlie](https://app.limacharlie.io/signup) 
+### Installing [LimaCharlie](https://app.limacharlie.io/signup) 
 
 Create a free account, fill in the questions asked to what is relevant for you
 
