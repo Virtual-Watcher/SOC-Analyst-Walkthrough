@@ -172,7 +172,7 @@ REG ADD "hklm\software\policies\microsoft\windows defender" /v DisableAntiSpywar
 
 If successful, you should see something similar: 
 
-![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/4dbdd2d4-dbd1-43e4-9a44-12ef5d4505e7)
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/9830cc7f-04a2-4731-84e4-fa262bdb4e03)
 
 Prepare to boot into Safe Mode to disable all Defender Services. Type "msconfig" into the search bar within the Start Menu and then open "System Configuration":
 
@@ -199,3 +199,51 @@ Once opened, we will need to go to the following key locations, finding the "Sta
 `Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinDefend`
 `Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Sense`
 ```
+
+The "Start" value for each of these should look like this: 
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/f2f933f8-ac3d-4f59-b0eb-c78070b6da48)
+
+After clicking it, you will be asked to edit the value. Change the "Value data" to "4":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/a1a4d0f2-8111-486f-a941-197c2ee0cca0)
+
+Once we have changed the Start value to 4 for each of the key locations, we can proceed to leave Safe Mode. First, we repeat this previous step:
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/e2f7afc6-a593-4c00-b63e-d6a5efd7d7a9)
+
+Secondly, we uncheck "Safe boot" and then select "Apply" and "OK":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/752bbb29-006c-4a19-8697-0baddec6a43e)
+
+Lastly, we click "Restart":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/93851354-b049-4a18-9d36-ea9661014ad4)
+
+Doing this should return us to our regular Desktop mode.
+
+As recommended in the blog series, we will now adjust our settings to prevent the VM from going into standby as we perform our exercises. From an administrative command prompt, use these commands to prevent the VM from going to sleep and into standby:
+```
+powercfg /change standby-timeout-ac 0
+powercfg /change standby-timeout-dc 0
+powercfg /change monitor-timeout-ac 0
+powercfg /change monitor-timeout-dc 0
+powercfg /change hibernate-timeout-ac 0
+powercfg /change hibernate-timeout-dc 0
+```
+
+With this done, we are now ready to install Sysmon.
+
+### Installing Sysmon
+
+Type "PowerShell" into the Start search bar and right-click "Windows Powershell", selecting "Run as administrator":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/17e92d9e-a5f6-4a91-88e6-47445ea14fa5)
+
+Within the Administrative Windows PowerShell, you can download Sysmon with the following command:
+```
+Invoke-WebRequest -Uri https://download.sysinternals.com/files/Sysmon.zip -OutFile C:\Windows\Temp\Sysmon.zip
+```
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/381aa405-7638-47a6-acb9-b82f1d745ca8)
+
