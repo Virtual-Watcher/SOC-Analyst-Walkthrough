@@ -186,7 +186,16 @@ Click "Restart":
 
 ![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/6085e8a0-b823-4f60-a176-cba93d0fc12b)
 
+While in Safe Mode, go to the Start search bar and type "regedit", opening "Registry Editor":
 
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/7e6a4c07-552e-4879-b006-51e6796317ce)
 
-
-
+Once opened, we will need to go to the following key locations, finding the "Start" value and changing it to "4":
+```
+`Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdBoot`
+`Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdFilter`
+`Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdNisDrv`
+`Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdNisSvc`
+`Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinDefend`
+`Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Sense`
+```
