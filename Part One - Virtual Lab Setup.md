@@ -247,3 +247,183 @@ Invoke-WebRequest -Uri https://download.sysinternals.com/files/Sysmon.zip -OutFi
 
 ![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/381aa405-7638-47a6-acb9-b82f1d745ca8)
 
+Unzip Sysmon.zip:
+```
+Expand-Archive -LiteralPath C:\Windows\Temp\Sysmon.zip -DestinationPath C:\Windows\Temp\Sysmon
+```
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/8854006e-d91f-4bc6-bb0b-ad3853e8a2fd)
+
+Download [SwiftOnSecurity](https://infosec.exchange/@SwiftOnSecurity)’s Sysmon config:
+```
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/SwiftOnSecurity/sysmon-config/master/sysmonconfig-export.xml -OutFile C:\Windows\Temp\Sysmon\sysmonconfig.xml
+```
+
+Install Sysmon with Swift’s config:
+```
+C:\Windows\Temp\Sysmon\Sysmon64.exe -accepteula -i C:\Windows\Temp\Sysmon\sysmonconfig.xml
+```
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/f88713eb-446a-4fe1-acc3-c5877250b2b5)
+
+Validate Sysmon64 service is installed and running:
+```
+Get-Service sysmon64
+```
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/e15fc181-c81a-4e23-8c49-9fca911a4dc2)
+
+Check for the presence of Sysmon Event Logs:
+```
+Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational" -MaxEvents 10
+```
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/a733e5db-892a-4144-9ebf-3ee6957c2f19)
+
+Install [LimaCharlie](https://app.limacharlie.io/signup) 
+
+Create a free account, fill in the questions asked to what is relevant for you
+
+After, create an organization - as per the blog (since the blog did porkchop-sandwiches for the "Name", I decided to go with "mayonnaise-instrument"): 
+```
+From the blog: 
+- Name: `whatever you want, but it must be unique`
+    
+- Data Residency: `whatever is closest`
+    
+- Demo Configuration Enabled: `disabled`
+    
+- Template: `Extended Detection & Response Standard`
+```
+
+For example:
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/7850d714-de8f-4639-9b95-eebe7b052882)
+
+Then add a Sensor: 
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/8678850d-6006-4a94-8c49-7eac1e05ba3b)
+
+Create an Installation Key:
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/73c32bb0-0fbd-4dac-83f7-f68f3c95a2c3)
+
+Select an Installation Key: 
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/dd4e78fb-157f-4804-a844-dbfb4f95adda)
+
+Specify the x86-64 (.exe) but wait, as we need to do some commands on the Windows VM:
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/fa798931-cbda-4263-8f2d-fde2590ae3b8)
+
+In the Administrative PowerShell prompt, we will travel to this directory:
+```
+cd C:\Users\User\Downloads
+```
+
+Then use the following command:
+```
+Invoke-WebRequest -Uri https://downloads.limacharlie.io/sensor/windows/64 -Outfile C:\Users\User\Downloads\lc_sensor.exe
+```
+
+You will need to also shift to a standard command prompt with the following command:
+```
+cmd.exe
+```
+
+You will then need to copy the following command line argument based on your sensor: 
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/a9a39fb2-9c25-4aa5-a9b4-763a0e7af269)
+
+HOWEVER, you must type this into the command prompt, before pasting the command, with a space between this input and the copied argument for your sensor:
+```
+lc_sensor.exe
+```
+
+For example: 
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/0a4c9dc5-8ae3-4bf8-a0a6-adcca9e33381)
+
+If successful, the following should be the output: 
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/12e4b894-f7a3-440e-a7c1-aeace0d9d64f)
+
+Likewise, on the sensor page where you copied the argument, the "Detected new sensor!" message should show: 
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/a117636a-55a6-4b15-8db4-813db39aba29)
+
+Returning the the LimaCharlie page, you will want to navigate the side tab, selecting "Artifact Collection" under "Sensors":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/7640d328-a248-4bf2-8f98-d5cc39ca3685)
+
+Then you will want to "Add Artifact Collection Rule":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/c0a79d6a-c581-4a0f-9799-622a06f9bbf4)
+
+Then, following the blog, we will input the following:
+```
+1. Name: `windows-sysmon-logs`
+    
+2. Platforms: `Windows`
+    
+3. Path Pattern: `wel://Microsoft-Windows-Sysmon/Operational:*`
+    
+4. Retention Period: `10`
+    
+5. Click “Save Rule”
+```
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/49d6d80a-41bc-4098-98dc-b4506c3717f2)
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/c1aa1be6-8cd9-4b4e-a892-e21ac4bafb44)
+
+With this step done, we are now ready to set up the attacker for these exercises: 
+
+### Setting Up the Attacker
+After logging in and having access to the command line, we can first do the following command to get the IP for our Ubuntu Linux Server:
+```
+sudo apt install net-tools
+```
+
+After, we can do the following command; which should give us our "ens33" IP which we will need for our next steps:  
+```
+ifconfig
+```
+
+We can start up another virtual machine and open up a terminal as advised in the walkthrough. I will be using Kali Linux out of personal preference, typing this into the command line:
+```
+ssh user@<ens33IP>
+```
+
+An example on my own terminal:
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/98240f52-f7dd-46d0-81b9-79c10c0b0429)
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/456e6924-351d-4855-b318-ecf51897c158)
+
+After using SSH to connect to our Ubuntu Server, drop into a root shell with the following command:
+```
+sudo su
+```
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/b0fd1bfa-4a2b-474a-91e1-9e1a8fdce31d)
+
+Now, use the commands shown below, as provided from the walkthrough:
+```
+# Download Sliver Linux server binary
+wget https://github.com/BishopFox/sliver/releases/download/v1.5.34/sliver-server_linux -O /usr/local/bin/sliver-server
+
+# Make it executable
+chmod +x /usr/local/bin/sliver-server
+
+# install mingw-w64 for additional capabilities
+apt install -y mingw-w64
+```
+
+After the processes finish, use the following command:
+```
+# Create our future working directory
+mkdir -p /opt/sliver
+```
+
+Once we have done this, we are now ready to observe the noise from out two machines interacting! Well done! This walkthrough will continue in Part Two - Observing Noise. 
