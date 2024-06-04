@@ -1,4 +1,4 @@
-# Part One: Virtual Lab Setup
+# Part One - Virtual Lab Setup
 
 ### Blog Post: https://blog.ecapuano.com/p/so-you-want-to-be-a-soc-analyst-part
 
