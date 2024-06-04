@@ -426,4 +426,4 @@ After the processes finish, use the following command:
 mkdir -p /opt/sliver
 ```
 
-Once we have done this, we are now ready to observe the noise from out two machines interacting! Well done! This walkthrough will continue in Part Two - Observing Noise. 
+Once we have done this, we are now ready to observe the noise from out two machines interacting! We will continue this walkthrough in Part Two - Observing Noise! 
