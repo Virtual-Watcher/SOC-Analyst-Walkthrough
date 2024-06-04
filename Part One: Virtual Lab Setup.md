@@ -109,4 +109,84 @@ Then we will want to create a name and choose the location where the VM will be 
 
 ### Disabling Windows Defender
 
-Once the Windows VM is imported and we are logged in, we will want to disable Windows Defender. 
+Once the Windows VM is imported and we are logged in, we will want to disable Windows Defender. As stated in the blog, we want to disable Defender so it does not interfere with the exercises we have planned as Defender will detect and restrict our actions. Following along with the walkthrough, we take the following actions: 
+
+Click the Windows icon next to the search bar and then click "Settings" underneath "Pinned".
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/5dc9c279-024a-4606-9b45-ac36fed4f4d5)
+
+Select "Windows Security" underneath Privacy & security:
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/4ed54ca1-ee29-43c3-a96b-d9007aa3bc89)
+
+Then choose "Virus & threat protection":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/f456bd9d-5308-4503-9891-6dbaed22e12b)
+
+Click "Manage settings" underneath Virus & threat protection settings:
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/8bec99a8-253a-4b00-bd13-4fb648634c0f)
+
+Turn "Tamper Protection" off:
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/720af128-d900-40f4-81db-f14147704304)
+
+To ensure that other settings do not interfere with our exercises, turn off the rest of the options as well:
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/66cf3079-dd51-4406-b93a-33506be9fa78)
+
+Open a command prompt as administrator by typing "cmd" in the search bar and then right-clicking the "Command Prompt" and then selecting "Run as administrator":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/a8f4ac78-0d1b-4ef0-8279-20957205d2ce)
+
+Run the following command:
+```
+gpedit.msc
+```
+
+This should bring up the Local Group Policy Editor, which we will need to navigate through and change certain policy settings and registries. First we will need to follow this path:
+```
+Computer Configuration > Administrative Templates > Windows Components > Microsoft Defender Antivirus
+```
+
+Then click on the "Microsoft Defender Antivirus" folder:
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/7150ad37-0ee5-4912-9610-80b22b74be12)
+
+Double-click "Turn off Microsoft Defender Antivirus":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/935666cd-b286-475c-8f36-4879ad679e56)
+
+Select "Enabled":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/e04152b4-f96d-4a78-b27a-232ef74d9ff9)
+
+Select "Apply" and then "OK": 
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/7d48adf2-b132-4dca-8e55-0cf78e866aa8)
+
+In the previous command prompt, copy and paste this command:
+```
+REG ADD "hklm\software\policies\microsoft\windows defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f
+```
+
+If successful, you should see something similar: 
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/4dbdd2d4-dbd1-43e4-9a44-12ef5d4505e7)
+
+Prepare to boot into Safe Mode to disable all Defender Services. Type "msconfig" into the search bar within the Start Menu and then open "System Configuration":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/43848bb7-699d-456d-9f0d-e4c555ec89b0)
+
+Under the "Boot" tab, check "Safe boot" and then click "Apply" and "OK". This will begin to restart the computer in Safe Mode:
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/23796886-90f8-403c-86cd-1332109df190)
+
+Click "Restart":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/6085e8a0-b823-4f60-a176-cba93d0fc12b)
+
+
+
+
+
