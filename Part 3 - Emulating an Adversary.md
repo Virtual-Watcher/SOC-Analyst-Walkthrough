@@ -110,4 +110,4 @@ Now, if we switch back over to LimaCharlie and go back under our Sensor to the "
 
 ![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/92e9b71f-448a-4df7-af4a-93a5d8f6af58)
 
-If your rules are correct, you should recieve similar output with your detections picking up activity of your C2 payload. In the next section, we will learn how to deny these actions in Part 4 - Blocking an Attack!
+If your rules are correct, you should recieve similar output with your detections picking up activity of your C2 payload. In the next section, we will learn how to deny these actions in, "Part 4 - Blocking an Attack"!
