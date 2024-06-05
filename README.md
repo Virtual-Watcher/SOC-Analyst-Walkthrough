@@ -5,6 +5,6 @@ In my personal journey of learning more to get into the field of Cybersecurity, 
 
 At many times there will be overlap between my walkthrough and the blog as this series is to reflect my personal experience following along, but also to educate and help those looking for more visuals as I cover parts in-between steps or have to alter certain exercises to work for myself. 
 
-I highly suggest you check out the blog as it is greatly educational! 
+I highly suggest you check out the blog as it is quite educational! 
 
 Eric Capuano's Blog: [So you want to be a SOC Analyst?](https://blog.ecapuano.com/p/so-you-want-to-be-a-soc-analyst-intro) 
