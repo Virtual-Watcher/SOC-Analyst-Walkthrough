@@ -1,4 +1,4 @@
-# Part One - Virtual Lab Setup
+# Part 1 - Virtual Lab Setup
 
 ### Blog Post: [So you want to be a SOC Analyst? Part 1](https://blog.ecapuano.com/p/so-you-want-to-be-a-soc-analyst-part)
 
@@ -426,4 +426,4 @@ After the processes finish, use the following command:
 mkdir -p /opt/sliver
 ```
 
-Once we have done this, we are now ready to observe the noise from out two machines interacting! We will continue this walkthrough in Part Two - Observing Noise! 
+Once we have done this, we are now ready to observe the noise from out two machines interacting! We will continue this walkthrough in Part 2 - Observing Noise! 
