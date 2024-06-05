@@ -1,6 +1,6 @@
 # Part 5 - Triggering YARA Scans
 
-Note: While this section is my Part 5, in the blog series this section actually mostly covers Part 6. Though, I will provide the link for Part 5 of the blog series below as it is a useful resource in learning how to tune false positives with your detection rules. 
+Note: While this section is my Part 5, in the blog series this section mostly covers Part 6. Though, I will provide the link for Part 5 of the blog series below as it is a useful resource in learning how to tune false positives with your detection rules. 
 
 Addtionally, to follow along with this section, it is important to have at least completed Part 1 and 2 of my walkthrough or the blog equivalent. 
 
