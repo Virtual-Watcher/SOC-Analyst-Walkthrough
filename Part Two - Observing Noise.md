@@ -221,3 +221,23 @@ We can inspect our payload's file hash:
 As we do so, we will be given the option to "Search hash on VirusTotal". Click the button to do so. 
 
 ![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/99ff1a00-841b-4320-8cda-0a6bb84f02c0)
+
+After, we will see a message saying, "Item not found":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/1abbd2f3-25d2-4219-9c7a-c42e98950247)
+
+As the blog covers, just because an item is not found, does not mean it is not malicious. Because VirusTotal has multiple malicious scannings in its database, if something seems dangerous but isn't found, it is still a possibility that it poses some form of threat. 
+
+Now, navigate to "Timeline", located below "File System":
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/265bcecf-9d5a-46d6-bd5c-a336c985fdf4)
+
+The Timeline shows a "near real-time view of EDR telemetry + event logs"
+
+Below is an excerpt of our own timeline, with our payload's name to the right.
+
+![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/e3b2bc7f-2b6f-4531-a454-e13706240faf)
+
+Likewise, if you search through the timeline, you can find where your own payload began next to "NEW_DOCUMENT" or "NEW_PROCESS".
+
+We will continue next time, mimicking the actions of an attacker, in Part Three - Emulating an Adversary!
