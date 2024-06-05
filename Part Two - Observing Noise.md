@@ -240,4 +240,4 @@ Below is an excerpt of our own timeline, with our payload's name to the right.
 
 Likewise, if you search through the timeline, you can find where your own payload began next to "NEW_DOCUMENT" or "NEW_PROCESS".
 
-We will continue next time, mimicking the actions of an attacker, in Part Three - Emulating an Adversary!
+We will continue by mimicking the actions of an attacker, next time in Part Three - Emulating an Adversary!
