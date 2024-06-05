@@ -1,8 +1,8 @@
-# Part Two - Observing Noise
+# Part 2 - Observing Noise
 
 ### Blog Post: [So you want to be a SOC Analyst? Part 2](https://blog.ecapuano.com/p/so-you-want-to-be-a-soc-analyst-part-ea2)
 
-Note: You will need to complete "Part One - Virtual Lab Setup" and have your Ubuntu Linux Server IP for this part of the walkthrough. 
+Note: You will need to complete "Part 1 - Virtual Lab Setup" and have your Ubuntu Linux Server IP for this part of the walkthrough. 
 
 ## Generating C2 Payload
 
@@ -240,4 +240,4 @@ Below is an excerpt of our own timeline, with our payload's name to the right.
 
 Likewise, if you search through the timeline, you can find where your own payload began next to "NEW_DOCUMENT" or "NEW_PROCESS".
 
-We will continue by mimicking the actions of an attacker, next time in Part Three - Emulating an Adversary!
+We will continue by mimicking the actions of an attacker, next time in Part 3 - Emulating an Adversary!
