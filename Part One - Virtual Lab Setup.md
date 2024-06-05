@@ -280,7 +280,7 @@ Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational" -MaxEvents 10
 
 ![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/a733e5db-892a-4144-9ebf-3ee6957c2f19)
 
-### Installing [LimaCharlie](https://app.limacharlie.io/signup) 
+## Installing [LimaCharlie](https://app.limacharlie.io/signup) 
 
 Create a free account, fill in the questions asked to what is relevant for you
 
@@ -379,7 +379,7 @@ Then, following the blog, we will input the following:
 
 With this step done, we are now ready to set up the attacker for these exercises: 
 
-### Setting Up the Attacker
+## Setting Up the Attacker
 After logging in and having access to the command line, we can first do the following command to get the IP for our Ubuntu Linux Server:
 ```
 sudo apt install net-tools
