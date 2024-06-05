@@ -1,8 +1,8 @@
-# Part Three - Observing Noise
+# Part 3 - Observing Noise
 
 ### Blog Post: [So you want to be a SOC Analyst? Part 3](https://blog.ecapuano.com/p/so-you-want-to-be-a-soc-analyst-part-77e)
 
-Note: You will need to complete "Part One - Virtual Lab Setup" and "Part Two - Observing Noise" or the blog equivalent to follow along with this part. If needed, retrace your steps from Part Two. 
+Note: You will need to complete "Part 1 - Virtual Lab Setup" and "Part 2 - Observing Noise" or the blog equivalent to follow along with this part. If needed, retrace your steps from Part 2. 
 
 ## Emulating an Adversary
 
@@ -110,4 +110,4 @@ Now, if we switch back over to LimaCharlie and go back under our Sensor to the "
 
 ![image](https://github.com/Virtual-Watcher/SOC-Analyst-Walkthrough/assets/171607952/92e9b71f-448a-4df7-af4a-93a5d8f6af58)
 
-If your rules are correct, you should recieve similar output with your detections picking up activity of your C2 payload. In the next section, we will learn how to deny these actions in Part Four - Blocking an Attack!
+If your rules are correct, you should recieve similar output with your detections picking up activity of your C2 payload. In the next section, we will learn how to deny these actions in Part 4 - Blocking an Attack!
